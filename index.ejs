@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuarios</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Lista de Usuarios</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(user => { %>
+            <tr>
+                <td><%= user.id %></td>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td>
+                    <a href="/edit/<%= user.id %>">Editar</a> 
+                    <a href="/delete/<%= user.id %>" style="background-color: #f44336;">Eliminar</a>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <h2>Agregar Usuario</h2>
+    <form action="/add" method="post">
+        <label for="name">Nombre:</label>
+        <input type="text" name="name" id="name" required>
+        <label for="email">Correo:</label>
+        <input type="email" name="email" id="email" required>
+        <button type="submit">Registrar</button>
+    </form>
+    <footer>© 2024 Proyecto Final por Lilly Tello</footer>
+</body>
+</html>
